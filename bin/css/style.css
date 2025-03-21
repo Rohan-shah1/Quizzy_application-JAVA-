@@ -1,0 +1,90 @@
+/* Dark Theme Styles */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-base: #2b2b2b;
+    -fx-background: #1e1e1e;
+    -fx-text-fill: #ffffff;
+}
+
+/* Color Variables */
+.root {
+    -dark-bg: #121212;
+    -dark-surface: #1e1e1e;
+    -dark-primary: #6c5ce7;
+    -dark-secondary: #4b3cad;
+    -dark-text: #ffffff;
+    -dark-text-secondary: #b0b0b0;
+    -dark-border: #3a3a3a;
+}
+
+/* Left Pane Styling */
+#left-pane {
+    -fx-background-color: -dark-surface;
+}
+
+/* Right Pane Styling */
+#right-pane {
+    -fx-background-color: linear-gradient(to bottom right, -dark-primary, -dark-secondary);
+}
+
+/* Form Elements */
+.login-header {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -dark-text;
+}
+
+.sub-header {
+    -fx-font-size: 14px;
+    -fx-text-fill: -dark-text-secondary;
+}
+
+.form-label {
+    -fx-text-fill: -dark-text-secondary;
+    -fx-font-weight: bold;
+}
+
+.dark-field {
+    -fx-background-color: -dark-bg;
+    -fx-text-fill: -dark-text;
+    -fx-prompt-text-fill: #666;
+    -fx-border-color: -dark-border;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 0 10px;
+}
+
+.dark-field:focused {
+    -fx-border-color: -dark-primary;
+    -fx-effect: innershadow(gaussian, rgba(108,92,231,0.3), 10, 0, 0, 0);
+}
+
+.dark-button {
+    -fx-background-color: -dark-primary;
+    -fx-text-fill: -dark-text;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.dark-button:hover {
+    -fx-background-color: #5b4bc4;
+}
+
+.hyperlink {
+    -fx-text-fill: -dark-text-secondary;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: -dark-primary;
+    -fx-underline: true;
+}
+
+/* Right Pane Text */
+#right-pane Text {
+    -fx-fill: -dark-text;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 2);
+}
+

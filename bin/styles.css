@@ -1,0 +1,39 @@
+.background {
+    -fx-background-color: #1e1e2d;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #29293d;
+    -fx-text-fill: white;
+    -fx-border-color: #4caf50;
+    -fx-border-radius: 5;
+    -fx-padding: 8;
+}
+
+.btn {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn:hover {
+    -fx-background-color: #66bb6a;
+}
+
+.hyperlink {
+    -fx-text-fill: #4caf50;
+    -fx-font-size: 14px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #81c784;
+}
