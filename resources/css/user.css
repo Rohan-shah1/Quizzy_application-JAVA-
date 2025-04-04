@@ -1,0 +1,208 @@
+/* General Styles */
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #1e1e1e;
+}
+
+/* Top Bar */
+.hbox {
+    -fx-background-color: linear-gradient(to right, #6c5ce7, #4b3cad);
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+}
+
+/* Sidebar */
+.vbox {
+    -fx-background-color: #1E1E1E;
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+    -fx-alignment: top-center;
+}
+
+/* Sidebar Buttons */
+.button {
+    -fx-background-color: #6c5ce7;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-pref-width: 180px;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+}
+.button:hover {
+    -fx-background-color: #4b3cad;
+}
+
+/* Logout Button */
+.button.logout {
+    -fx-background-color: #D32F2F;
+}
+.button.logout:hover {
+    -fx-background-color: #B71C1C;
+}
+
+/* Content Area */
+.vbox.content {
+    -fx-background-color: linear-gradient(to bottom, #e6f0ff, #cfd8ff);
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-border-color: #3a3a3a;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+/* Labels in Content */
+.label.content-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #2b2b2b;
+}
+
+/* For the Next Question button */
+.next-button {
+    -fx-background-color: #4CAF50 !important;
+    -fx-text-fill: white !important;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.next-button:hover {
+    -fx-background-color: #45a049 !important;
+}
+
+.next-button:pressed {
+    -fx-background-color: #3d8b40 !important;
+}
+
+/* Optional: Add transition effect */
+.next-button {
+    -fx-transition: -fx-background-color 0.3s ease;
+}
+/* For option buttons */
+.option-button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-text-fill: black;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.selected-option {
+    -fx-background-color: #6c5ce7 !important;
+    -fx-text-fill: white !important;
+    -fx-border-color: #4b3cad !important;
+}
+.score-label {
+    -fx-text-fill: #6c5ce7;
+    -fx-font-weight: bold;
+}
+/* Study Materials Styles */
+.study-material-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+
+.type-badge {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 2px 8px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 12px;
+}
+
+.material-description {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-size: 14px;
+}
+
+.upload-date {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 12px;
+}
+
+
+.material-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.empty-label {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 16px;
+}
+.study-material-container {
+    -fx-background-color: #f5f5f5;
+}
+
+.invalid-material-label {
+    -fx-text-fill: #e74c3c;
+    -fx-font-style: italic;
+}
+
+
+.material-card {
+    -fx-background-color: white;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-min-width: 600px;
+}
+
+.download-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-padding: 5px 15px;
+    -fx-background-radius: 4px;
+}
+
+.download-button:hover {
+    -fx-background-color: #219a52;
+}
+
+.timer-label {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 20px;
+}
+/* Style the entire table */
+.table-view {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-text-fill: black; /* Default text color */
+}
+
+/* Style table cells */
+.table-cell {
+    -fx-text-fill: black; /* Cell text color */
+    -fx-font-size: 14px;
+}
+
+/* Style column headers */
+.table-view .column-header {
+    -fx-background-color: #6c5ce7; /* Purple header */
+    -fx-text-fill: white; /* Header text color */
+    -fx-font-weight: bold;
+}
+
+/* Style alternating rows */
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9; /* Light gray for odd rows */
+}
+
+.table-row-cell:even {
+    -fx-background-color: #ffffff; /* White for even rows */
+}
+
+/* Ensure no transparency in cells */
+.table-row-cell {
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}

@@ -234,6 +234,59 @@ public class CreateTables {
                 }
             }
         }
+        public static boolean createResultsTable() {
+            // SQL query to create the results table
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS results ("
+                + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                + "user_id INT NOT NULL, "
+                + "type ENUM('default', 'mix') NOT NULL DEFAULT 'default', "
+                + "subject VARCHAR(50), "
+                + "difficulty_level VARCHAR(10), "
+                + "timetaken INT, "  // in seconds
+                + "score INT NOT NULL, "
+                + "completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
+                + "FOREIGN KEY (user_id) REFERENCES users(user_id), "
+                + "CONSTRAINT chk_type_fields CHECK ("
+                + "    (type = 'default' AND subject IS NOT NULL AND difficulty_level IS NOT NULL) OR "
+                + "    (type = 'mix' AND subject IS NULL AND difficulty_level IS NULL)"
+                + ")"
+                + ")";
+
+            Connection conn = null;
+            Statement stmt = null;
+
+            try {
+                // Get a connection from DbConn
+                conn = DbConn.getInstance().getConnection();
+                if (conn == null) {
+                    return false;  // No connection available
+                }
+
+                // Create the statement
+                stmt = conn.createStatement();
+
+                // Execute the SQL statement
+                stmt.executeUpdate(createTableSQL);
+                System.out.println("Results table created successfully (if it doesn't already exist).");
+                return true;  // Table created successfully
+
+            } catch (SQLException e) {
+                e.printStackTrace();  // Log any SQL exceptions
+                return false;  // Table creation failed
+            } finally {
+                try {
+                    if (stmt != null) {
+                        stmt.close();  // Close statement
+                    }
+                    if (conn != null && !conn.isClosed()) {
+                        conn.close();  // Close connection
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();  // Handle closing exceptions
+                }
+            }
+        }
+
 
 
 
@@ -242,6 +295,7 @@ public class CreateTables {
     	createPendingRegistrationsTable();
     	createQuestionsTable();
     	createQuestionOptionsTable();
-    	createStudyMaterialsTable();    
+    	createStudyMaterialsTable();
+    	createResultsTable();
     	}
 }

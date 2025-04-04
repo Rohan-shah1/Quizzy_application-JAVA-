@@ -128,7 +128,7 @@ public class AdminDashboard {
     }
 
     // Load profile image with round border
-    private ImageView loadProfileImage(java.io.InputStream inputStream) {
+    public static ImageView loadProfileImage(java.io.InputStream inputStream) {
         try {
             Image image = new Image(inputStream);
             ImageView imageView = new ImageView(image);
@@ -274,6 +274,7 @@ public class AdminDashboard {
         titleLabel.setFont(Font.font("Arial", 18));
 
         TextField questionField = new TextField();
+        questionField.setStyle("-fx-prompt-text-fill: white;");
         questionField.setPromptText("Enter question text");
 
         ComboBox<String> subjectDropdown = new ComboBox<>();
@@ -286,6 +287,7 @@ public class AdminDashboard {
         typeDropdown.getItems().addAll("MCQ", "True/False");
 
         TextField answerField = new TextField();
+        answerField.setStyle("-fx-prompt-text-fill: white;");
         answerField.setPromptText("Enter correct answer");
 
         // Fields for MCQ options
@@ -336,6 +338,8 @@ public class AdminDashboard {
 
                     // Ensure all options are filled
                     if (options.values().stream().anyMatch(String::isEmpty)) {
+                    	showAlert("Error", "All options are required for MCQ!");
+
                         System.out.println("All options are required for MCQ!");
                         return;
                     }
@@ -348,11 +352,14 @@ public class AdminDashboard {
                 if (newQuestion != null) {
                     // Insert the new question and its options into the database
                     AdminDashboardDAO.addQuestionToDatabase(newQuestion);
+                	showAlert("Success", "Question added and inserted into the database successfully!");
                     System.out.println("Question added and inserted into the database successfully!");
                 } else {
+                	showAlert("Error", "Failed to add question, unknown type.");
                     System.out.println("Failed to add question, unknown type.");
                 }
             } else {
+            	showAlert("Error", "All fields are required!");
                 System.out.println("All fields are required!");
             }
         });
@@ -361,6 +368,13 @@ public class AdminDashboard {
         formBox.setAlignment(Pos.CENTER);
 
         contentArea.getChildren().addAll(titleLabel, formBox);
+    }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     
@@ -562,6 +576,8 @@ public class AdminDashboard {
                 questionTable.setItems(fetchFilteredQuestions(selectedSubject, selectedDifficulty));  // Fetch filtered questions
             } else {
                 // Handle case when either subject or difficulty is not selected
+            	showAlert("Error", "Please select both subject and difficulty level.");
+
                 System.out.println("Please select both subject and difficulty level.");
             }
         });
@@ -655,8 +671,11 @@ public class AdminDashboard {
             } else {
                 boolean isUploaded = AdminDashboardDAO.uploadStudyMaterial(title, description, file[0]);
                 if (isUploaded) {
+                	showAlert("Success", "Study Material uploaded successfully.");
+
                     System.out.println("Study Material uploaded successfully.");
                 } else {
+                	showAlert("Error", "Failed to upload study material.");
                     System.out.println("Failed to upload study material.");
                 }
             }
@@ -696,12 +715,16 @@ public class AdminDashboard {
             {
                 btnDelete.setOnAction(e -> {
                     StudyMaterial selectedMaterial = getTableView().getItems().get(getIndex());
-                    boolean isDeleted = AdminDashboardDAO.deleteStudyMaterial(selectedMaterial.getId());
+                    boolean isDeleted = AdminDashboardDAO.deleteStudyMaterial(selectedMaterial.getMaterialId());
                     if (isDeleted) {
                         System.out.println("Material deleted successfully.");
+                    	showAlert("success", "Material deleted successfully.");
+
                         getTableView().getItems().remove(getIndex());  // Remove from UI table
                     } else {
                         System.out.println("Failed to delete material.");
+                    	showAlert("Error", "Failed to delete material.");
+
                     }
                 });
 
