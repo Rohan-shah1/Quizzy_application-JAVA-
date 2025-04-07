@@ -378,19 +378,23 @@ public class UserDashboard implements QuizObserver {
  
 
     private void startMixedQuiz() {
-    	contentArea.getChildren().clear();
-    	userDashboardService.resetQuizSession(); // Reset for new session
+        // Stop existing timeline if running
+        if (timeline != null) {
+            timeline.stop();
+        }
+
+        contentArea.getChildren().clear();
+        userDashboardService.resetQuizSession();
         mixedQuestions = userDashboardService.fetchRandomMixedQuestions();
         currentMixedQuestionIndex = 0;
-        
+
         if (mixedQuestions.isEmpty()) {
             showAlert("No Questions", "No questions available in the database!");
             return;
         }
 
-        // Initialize quiz UI (same as regular quiz)
         initializeQuizUI();
-        quizSubject.setScore(0);// resets scores.
+        quizSubject.setScore(0);
         setupTimer();
         loadNextMixedQuestion();
         timeline.play();
@@ -541,7 +545,7 @@ public class UserDashboard implements QuizObserver {
         if (timeSeconds.get() <= 0) {
             timeline.stop();
             Platform.runLater(() -> {
-                showCompletionPopup(quizSubject.getScore());
+                showMixCompletionPopup(quizSubject.getScore()); // Fix: Use mix-specific popup
                 contentArea.getChildren().clear();
             });
         }
