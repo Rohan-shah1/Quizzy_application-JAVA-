@@ -87,4 +87,23 @@
     -fx-fill: -dark-text;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 2);
 }
+.root {
+    -fx-background-color: #f0f0f0;
+}
 
+.form-container {
+    -fx-padding: 40px;
+    -fx-spacing: 20px;
+    -fx-alignment: center;
+}
+
+/* Prevent window resizing conflicts */
+BorderPane {
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+}
+
+/* Button styling */
+.button {
+    -fx-pref-width: 300px;
+}

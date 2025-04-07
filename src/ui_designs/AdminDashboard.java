@@ -106,7 +106,7 @@ public class AdminDashboard {
         root.setCenter(contentArea);
 
         Scene scene = new Scene(root, 900, 600);
-        scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/css/user.css").toExternalForm());
         return scene;
     }
 
@@ -274,7 +274,7 @@ public class AdminDashboard {
         titleLabel.setFont(Font.font("Arial", 18));
 
         TextField questionField = new TextField();
-        questionField.setStyle("-fx-prompt-text-fill: white;");
+        questionField.setStyle("-fx-prompt-text-fill: black;");
         questionField.setPromptText("Enter question text");
 
         ComboBox<String> subjectDropdown = new ComboBox<>();
@@ -287,7 +287,7 @@ public class AdminDashboard {
         typeDropdown.getItems().addAll("MCQ", "True/False");
 
         TextField answerField = new TextField();
-        answerField.setStyle("-fx-prompt-text-fill: white;");
+        answerField.setStyle("-fx-prompt-text-fill: black;");
         answerField.setPromptText("Enter correct answer");
 
         // Fields for MCQ options

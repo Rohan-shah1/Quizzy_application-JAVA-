@@ -116,10 +116,28 @@ public class Register {
         return scene;
     }
 
-    // Method to open the login page
     private void openLoginPage() {
+        // Preserve current window state
+        boolean wasMaximized = primaryStage.isMaximized();
+        double previousWidth = primaryStage.getWidth();
+        double previousHeight = primaryStage.getHeight();
+        double xPos = primaryStage.getX();
+        double yPos = primaryStage.getY();
+
+        // Create login page with existing stage
         Login loginPage = new Login();
-        loginPage.start(primaryStage);
+        loginPage.start(primaryStage);  // Assuming start() handles scene creation
+        
+        // Restore window state
+        primaryStage.setMaximized(wasMaximized);
+        if (!wasMaximized) {
+            primaryStage.setWidth(previousWidth);
+            primaryStage.setHeight(previousHeight);
+            primaryStage.setX(xPos);
+            primaryStage.setY(yPos);
+        }
+        
+        primaryStage.show();
     }
 
     // UI Helper Methods

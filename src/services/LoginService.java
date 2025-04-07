@@ -3,6 +3,7 @@ package services;
 import ui_designs.AdminDashboard;
 import ui_designs.UserDashboard;
 import ui_designs.Register;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.QuizSubject;
@@ -52,11 +53,28 @@ public class LoginService {
         primaryStage.show();
     }
 
-    // Method to open the registration page
     public void openRegisterPage(Stage primaryStage) {
-        Register registerPage = new Register(primaryStage);  // Pass the primaryStage to register
-        Scene registerScene = registerPage.createRegisterScene();  // Create the register scene
-        primaryStage.setScene(registerScene);  // Switch to registration page scene
+        // Capture state before any changes
+        boolean wasMaximized = primaryStage.isMaximized();
+        double previousWidth = primaryStage.getWidth();
+        double previousHeight = primaryStage.getHeight();
+
+        Register registerPage = new Register(primaryStage);
+        Scene registerScene = registerPage.createRegisterScene();
+
+        // Set the new scene first
+        primaryStage.setScene(registerScene);
+
+        // Defer state restoration to after JavaFX renders the scene
+        Platform.runLater(() -> {
+            if (wasMaximized) {
+                primaryStage.setMaximized(true);
+            } else {
+                primaryStage.setWidth(previousWidth);
+                primaryStage.setHeight(previousHeight);
+            }
+        });
+
         primaryStage.show();
     }
 
